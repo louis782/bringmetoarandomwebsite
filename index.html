@@ -69,7 +69,6 @@ Random Domain suffix
         }
     }
     function generateRandomString() {
-    // 1. Pick a random length between 5 and 10
     const min = 3;
     const max = 20;
     let length = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -78,7 +77,6 @@ Random Domain suffix
         length = parseInt(slider.value)
     }
     
-    // 2. Define the characters you want to use
     const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01233456789';
     const dss = [
         ".com",
@@ -97,8 +95,7 @@ Random Domain suffix
     if(!rds.checked){
         dsr = ds.value
     }
-    
-    // 3. Loop through and pick a random character for each slot
+
     for (let i = 0; i < length; i++) {
         const randomIndex = Math.floor(Math.random() * characters.length);
         result += characters.charAt(randomIndex);
@@ -112,13 +109,11 @@ Random Domain suffix
         var link = "";
         
         while (!found) {
-            // 2. Format with https://www. so the proxy accepts it
             link = "https://www." + generateRandomString();
             
             console.log("Testing: " + link + "&#x274C;");
             info.innerHTML = "Testing: " + link + "&#x274C;"
             
-            // 3. Use 'await' so the loop pauses until the site answers true or false
             var exists = await checkurl(link); 
             
             if (exists) {
@@ -126,7 +121,6 @@ Random Domain suffix
             }
         }
         
-        // 4. Open the winning link after the loop finds a match
         info.innerHTML = "Found: " + link + "&#9989;"
 
         setTimeout(() => {
